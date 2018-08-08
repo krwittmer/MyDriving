@@ -12,7 +12,12 @@ namespace MyDrivingService.Controllers
         public IEnumerable<string> Get()
         {
             // TODO: Implement first!
-            return new string[] { "Valid Issuer", ConfigurationManager.AppSettings["ValidIssuer"] };
+            return new string[]
+            {
+                "Valid Issuer", ConfigurationManager.AppSettings["ValidIssuer"],
+                "| ",
+                "Valid Audience", ConfigurationManager.AppSettings["ValidIssuer"]
+            };
         }
 
         // GET: api/ConfigInfo/5
