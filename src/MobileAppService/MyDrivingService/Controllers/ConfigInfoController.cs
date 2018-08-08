@@ -4,26 +4,29 @@ using System.Web.Http;
 
 namespace MyDrivingService.Controllers
 {
+    /**
+     * A first cut to query the API and identify back-end resources.
+     * Need to investigate other options to query such API dependency meta-data (leveraging the Azure context).
+     */
     public class ConfigInfoController : ApiController
     {
-        // TODO: Get/return configuration details (Azure, DB, etc.)
-
-        // GET: api/ConfigInfo
+        // GET: api/configinfo
+        // TODO: [Authorize]
         public IEnumerable<string> Get()
         {
-            // TODO: Implement first!
-            return new string[]
+            return new[]
             {
                 "Valid Issuer", ConfigurationManager.AppSettings["ValidIssuer"],
-                "| ",
-                "Valid Audience", ConfigurationManager.AppSettings["ValidIssuer"]
-            };
-        }
+                " | ",
+                "Valid Audience", ConfigurationManager.AppSettings["ValidAudience"],
+                " | ",
+                "IoTHubConnectionString", ConfigurationManager.AppSettings["IoTHubConnectionString"],
+                " | ",
+                "MS_TableConnectionString", ConfigurationManager.AppSettings["MS_TableConnectionString"],
+                " | ",
+                "MS_NotificationHubConnectionString", ConfigurationManager.AppSettings["MS_NotificationHubConnectionString"]
 
-        // GET: api/ConfigInfo/5
-        public string Get(int id)
-        {
-            return "value";
+            };
         }
     }
 }
